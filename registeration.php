@@ -12,7 +12,7 @@
       <h1 class="cover-heading">Welcome</h1>
       <p class="lead">
         <a href="#" class="btn btn-lg btn-secondary">Resigter</a>
-        <a href="/signin/login.php" class="btn btn-lg btn-secondary">Login</a>
+        <a href="/project/login.php" class="btn btn-lg btn-secondary">Login</a>
       </main>
     </div>
 

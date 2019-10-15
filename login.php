@@ -8,7 +8,7 @@
   </head>
   <body>
 
-    <form action="config.php" method="POST" class="form-signin">
+    <form action="welcome.php" method="POST" class="form-signin">
       <h1 class="featurette-heading"> Sign in</h1>
   <div class="form-group ">
     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -16,19 +16,42 @@
   <div class="form-group">
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
   </div>
-  <button href="www.google.com" type="submit" class="btn btn-lg btn-secondary">Submit</button>
-  <button href="www.google.com"  name="button"></button>
+<div class="form-group">
+  <label >**Please Enter Email</label>
+
+</div>
+
+<div class="form-group">
+  <button href="www.google.com"  type="submit" class="btn btn-lg btn-secondary">Submit</button>
+
+</div>
 </form>
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-	<!-- <script type="text/javascript">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+<script type="text/javascript">
+
   $("button").click(function(){
-    if(!$('#exampleInputPassword1').val()){
-      alert("please enter password pls pls ps");
-      window.location.replace("http://stackoverflow.com");
+
+    var password = $('#exampleInputPassword1').val();
+    var email =$('#exampleInputEmail1').val();
+    if(!email && !password)
+    {
+      $("label").css("visibility", "visible").text("** Please Enter Email and Password");
+      return false;
+    }
+    else if(!password){
+      $("label").css("visibility", "visible").text("** Please Enter Password");
+      return false;
+    }
+    else if(!email){
+      $("label").css("visibility", "visible").text("** Please Enter Email");
+      return false;
+    }
+    else{
+      $("label").css("visibility", "hidden");
     }
  });
-	</script> -->
+	</script>
 
   </body>
 </html>
