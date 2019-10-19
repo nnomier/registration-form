@@ -8,7 +8,7 @@
   </head>
   <body>
 
-    <form action="welcome.php" method="POST" class="form-signin">
+    <form  action="welcome.php" method="POST" class="form-signin">
       <h1 class="featurette-heading"> Sign in</h1>
   <div class="form-group ">
     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -17,21 +17,19 @@
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
   </div>
 <div class="form-group">
-  <label >**Please Enter Email</label>
+  <label id='error' ></label>
 
 </div>
 
 <div class="form-group">
-  <button href="www.google.com"  type="submit" class="btn btn-lg btn-secondary">Submit</button>
+  <button   type="button" class="btn btn-lg btn-secondary">Login</button>
 
 </div>
 </form>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
-
   $("button").click(function(){
-
     var password = $('#exampleInputPassword1').val();
     var email =$('#exampleInputEmail1').val();
     if(!email && !password)
@@ -49,6 +47,23 @@
     }
     else{
       $("label").css("visibility", "hidden");
+
+      $.ajax(
+				{
+					url: "login_db.php",
+					type: "POST",
+					data: {email: email , password: password },
+					success: function(data){
+						if(data=='success'){
+              console.log("okok");
+							window.location.assign("welcome.php");
+						}else{
+              $("label").css("visibility", "visible").text("** User doesn't exist");
+              return false;
+						}
+					}
+				}
+			);
     }
  });
 	</script>
