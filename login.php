@@ -8,7 +8,7 @@
   </head>
   <body>
 
-    <form  action="welcome.php" method="POST" class="form-signin">
+    <form action="welcome.php" method="POST" class="form-signin">
       <h1 class="featurette-heading"> Sign in</h1>
   <div class="form-group ">
     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -55,10 +55,9 @@
 					data: {email: email , password: password },
 					success: function(data){
 						if(data=='success'){
-              console.log("okok");
-							window.location.assign("welcome.php");
+						window.location.assign("welcome.php");
 						}else{
-              $("label").css("visibility", "visible").text("** User doesn't exist");
+              $("label").css("visibility", "visible").text("** Invalid Credentials");
               return false;
 						}
 					}

@@ -9,18 +9,13 @@
 <body>
 
   <?php
-  require 'db_connection.php';
-  $conn = OpenCon();
-  $email =$_POST['email'];
-  $password =$_POST['password'];
-  $sql = "SELECT * FROM `user` WHERE `email` = '$email' AND `password` = '$password'" ;
-
-  $res=mysqli_query($conn, $sql);
-  $row = mysqli_fetch_array($res);
-  $username=$row['username'];
-  // $username = $_POST['username'];
-
-  echo "<h1 class='display-3'>Welcome ".$row['username']."!</h1>" ;
+  // session_start();
+  // echo "<h1 class='display-3'>Welcome ".$_SESSION['username'] ."!</h1>" ;
+  //  // remove all session variables
+  // session_unset();
+  //
+  // // destroy the session
+  // session_destroy();
   ?>
 </body>
 

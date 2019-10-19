@@ -7,22 +7,31 @@ include 'db_connection.php';
  $password = $_POST['password'];
 if(isset($_POST['username'], $_POST['email'],$_POST['password'])){
   $conn = OpenCon();
-  // $sql = "INSERT INTO `user` ( `email`, `password`,
-  // `username`) VALUES ('$email',
-  // ' $password','$username')
-  // ";
-  $sql = "INSERT INTO `user` ( `email`, `password`,
-  `username`) VALUES ('$email',
-  '$password','$username')
-  ";
 
-  if(mysqli_query($conn, $sql)){
-      echo "Records inserted successfully.";
-      echo "<h1 class='display-3'>Welcome ".$username."!</h1>" ;
+  $sql = "SELECT * FROM `user` WHERE `email` = '$email'" ;
 
-  } else{
-      echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
-  }
+  $res=mysqli_query($conn, $sql);
+  if($res){
+    $numrows = mysqli_num_rows($res);
+    if($numrows > 0)
+    {
+      echo "fail";
+    }
+    else{
+      $sql = "INSERT INTO `user` ( `email`, `password`,
+      `username`) VALUES ('$email',
+      '$password','$username')
+      ";
+      mysqli_query($conn, $sql);
+
+      session_start();
+      $_SESSION['username']=$username;
+      echo "success";
+    }
+}
+
+
+
 
    CloseCon($conn);
 }

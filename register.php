@@ -25,21 +25,32 @@
 </div>
 
 <div class="form-group">
-  <button   type="submit" name="register" class="btn btn-lg btn-secondary">Register</button>
+  <button  type="button" name="register" class="btn btn-lg btn-secondary">Register</button>
 
 </div>
 </form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
+  function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
 
   $("button").click(function(){
+
+
     var password = $('#exampleInputPassword1').val();
     var email =$('#exampleInputEmail1').val();
     var username=$('#username').val();
     if(!email || !password ||!username )
     {
       $("label").css("visibility", "visible").text("** Please Enter All Fields");
+      return false;
+    }
+    else if(!validateEmail(email))
+    {
+      $("label").css("visibility", "visible").text("** Wrong email format");
       return false;
     }
     else{
@@ -50,8 +61,16 @@
       data: {username:username, email: email , password:password },
       cache: false,
       success: function(response) {
-      //  window.location.assign("welcome.php");
-      console.log("successfull");      }
+        console.log(response+'noha');
+        if(response=='success'){
+         window.location.assign("welcome.php");
+         console.log("successfull");
+        }
+        else{
+          $("label").css("visibility", "visible").text("** Invalid Credentials");
+          return false;
+        }
+           }
       });
     }
  });
