@@ -6,7 +6,7 @@ if(isset($_POST['email'], $_POST['password'])){
    $conn = OpenCon();
 
    $email =$_POST['email'];
-   $password = password_verify($_POST['password'], $existingHashFromDb);
+   $password = $_POST['password'];
 
    $sql = "SELECT * FROM `user` WHERE `email` = '$email' AND `password` = '$password'" ;
 
@@ -15,7 +15,7 @@ $res=mysqli_query($conn, $sql);
      $numrows = mysqli_num_rows($res);
      if($numrows > 0)
      {  session_start();
-       $res=mysqli_query($conn, $sql);
+      $res=mysqli_query($conn, $sql);
       $row = mysqli_fetch_array($res);
       $username=$row['username'];
       $_SESSION['email']=$email;

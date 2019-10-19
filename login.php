@@ -54,6 +54,7 @@
 					type: "POST",
 					data: {email: email , password: password },
 					success: function(data){
+            console.log(data);
 						if(data=='success'){
 						window.location.assign("welcome.php");
 						}else{
