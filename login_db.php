@@ -8,7 +8,7 @@ if(isset($_POST['email'], $_POST['password'])){
    $email =$_POST['email'];
    $password = $_POST['password'];
 
-   $sql = "SELECT * FROM `user` WHERE `email` = '$email' AND `password` = '$password'" ;
+   $sql = "SELECT * FROM `user` WHERE `email` = '$email' " ;
 
 $res=mysqli_query($conn, $sql);
    if($res){
@@ -20,8 +20,14 @@ $res=mysqli_query($conn, $sql);
       $username=$row['username'];
       $_SESSION['email']=$email;
       $_SESSION['username']=$username;
+      if (password_verify($password, $row['password'])) {
+
       echo "success";
      }
+     else{
+       echo "fail";
+     }
+   }
      else
      {
       echo "fail";

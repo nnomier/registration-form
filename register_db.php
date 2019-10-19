@@ -5,6 +5,8 @@ include 'db_connection.php';
  $username = $_POST['username'];
  $email = $_POST['email'];
  $password = $_POST['password'];
+ $password = password_hash($password, PASSWORD_DEFAULT);
+
 if(isset($_POST['username'], $_POST['email'],$_POST['password'])){
   $conn = OpenCon();
 
