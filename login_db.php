@@ -1,6 +1,5 @@
 <?php
 
-
 if(isset($_POST['email'], $_POST['password'])){
    require 'db_connection.php';
    $conn = OpenCon();
@@ -10,7 +9,8 @@ if(isset($_POST['email'], $_POST['password'])){
 
    $sql = "SELECT * FROM `user` WHERE `email` = '$email' " ;
 
-$res=mysqli_query($conn, $sql);
+   $res=mysqli_query($conn, $sql);
+
    if($res){
      $numrows = mysqli_num_rows($res);
      if($numrows > 0)

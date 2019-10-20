@@ -1,6 +1,5 @@
 <?php
-include 'db_connection.php';
-
+ include 'db_connection.php';
 
  $username = $_POST['username'];
  $email = $_POST['email'];
@@ -31,9 +30,6 @@ if(isset($_POST['username'], $_POST['email'],$_POST['password'])){
       echo "success";
     }
 }
-
-
-
 
    CloseCon($conn);
 }
