@@ -9,7 +9,7 @@
 if(isset($_POST['username'], $_POST['email'],$_POST['password'])){
   $conn = OpenCon();
 
-  $sql = "SELECT * FROM `user` WHERE `email` = '$email'" ;
+  $sql = "SELECT * FROM `user` WHERE `email` = '$email' or `username`='$username'" ;
 
   $res=mysqli_query($conn, $sql);
   if($res){
