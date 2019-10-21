@@ -10,7 +10,7 @@
 
   <?php
   session_start();
-  echo "<h1 class='display-3'>Welcome ".$_SESSION['username'] ."!</h1>" ;
+  echo "<h1 class='display-1'>Welcome ".$_SESSION['username'] ."!</h1>" ;
   //  // remove all session variables
   // session_unset();
   //
